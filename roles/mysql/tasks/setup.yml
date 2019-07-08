@@ -1,0 +1,16 @@
+---
+- name: MySQL | Install MySQL
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - mysql-common
+    - mysql-server
+    - python-mysqldb
+  when: ansible_os_family == "Debian"
+
+- name: MySQL | Install MySQL
+  yum: pkg={{ item }} state=installed
+  with_items:
+    - mysql-common
+    - mysql-server
+  when: ansible_os_family == "CentOS" or ansible_os_family == "RedHat"
+

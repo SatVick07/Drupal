@@ -1,0 +1,40 @@
+---
+- name: PHP | install php packages
+  apt: pkg={{ item }} state=present
+  with_items:
+    - php
+    - php-fpm
+    - php-cli
+    - php-common
+    - php-curl
+    - php-json
+    - php-gd
+    - php-odbc
+    - php-mbstring
+    - php-mysql
+    - php-xmlrpc
+    - php-opcache
+    - php-intl
+    - php-bz2
+    - php-xml
+  when: ansible_os_family == "Debian"
+
+- name: PHP | install php packages
+  yum: pkg={{ item }} state=present
+  with_items:
+    - php
+    - php-fpm
+    - php-cli
+    - php-common
+    - php-curl
+    - php-json
+    - php-gd
+    - php-odbc
+    - php-mbstring
+    - php-mysql
+    - php-xmlrpc
+    - php-opcache
+    - php-intl
+    - php-bz2
+    - php-xml
+  when: ansible_os_family == "CentOS" or ansible_os_family == "RedHat"
